@@ -30,6 +30,27 @@ function ItemsCtrl($scope) {
         $scope.newitem = {};
     };
 
+    $scope.scanBarcode = function () {
+
+        var scanner = cordova.require("com.phonegap.plugins.barcodescanner.BarcodeScanner");
+
+        navigator.notification.vibrate(1000);
+
+        scanner.scan(
+            function (result) {
+                alert("We got a barcode\n" +
+                    "Result: " + result.text + "\n" +
+                    "Format: " + result.format + "\n" +
+                    "Cancelled: " + result.cancelled);
+                $scope.newitem.name = result.text;
+
+            },
+            function (error) {
+                alert("Scanning failed: " + error);
+            }
+        );
+
+    }
 };
 
 function ItemCtrl($scope, $routeParams) {

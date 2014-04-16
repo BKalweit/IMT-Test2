@@ -7,7 +7,6 @@
 function MainCtrl($scope, $location) {
 
 
-
 }
 
 
@@ -30,6 +29,7 @@ function ItemsCtrl($scope) {
         $scope.items.push($scope.newitem);
         $scope.newitem = {};
     };
+
 };
 
 function ItemCtrl($scope, $routeParams) {

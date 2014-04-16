@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <title>Seed App</title>
+    <link rel="stylesheet" href="scripts/vendor/bootstrap-yeti.css">
+</head>
+
+<body style="padding-top: 80px; padding-bottom: 30px;" ng-controller="MainCtrl">
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Seed App</a>
+        </div>
+        <div class="collapse navbar-collapse" collapse="navCollapsed">
+            <ul class="nav navbar-nav">
+                <li><a href="#items">Items</a></li>
+                <li><a>{{ status2 }}</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+<div ng-view=""></div>
+
+
+
+<script type="text/javascript" src="phonegap.js"></script>
+
+<script src="scripts/vendor/angular.js"></script>
+<script src="scripts/vendor/angular-route.js"></script>
+<script src="scripts/vendor/ui-bootstrap-tpls-0.9.0.js"></script>
+<script src="scripts/controllers.js"></script>
+
+<script>
+    var app = angular.module('app', ['ngRoute', 'ui.bootstrap'], null);
+    app.directive('ngEnter', function () {
+        return function (scope, element, attrs) {
+            element.bind("keydown keypress", function (event) {
+                if(event.which === 13) {
+                    scope.$apply(function (){
+                        scope.$eval(attrs.ngEnter);
+                    });
+
+                    event.preventDefault();
+                }
+            });
+        };
+    });
+    app.filter('toArray', function () {
+        'use strict';
+
+        return function (obj) {
+            if (!(obj instanceof Object)) {
+                return obj;
+            }
+
+            return Object.keys(obj).map(function (key) {
+                return Object.defineProperty(obj[key], '$key', {__proto__: null, value: key});
+            });
+        }
+    });
+    app.filter('checkmark', function() {
+        return function(input) {
+            return input ? '\u2713' : '\u2718';
+        };
+    });
+    app.config(['$routeProvider',
+        function($routeProvider) {
+            $routeProvider.
+                    when('/', {
+                        templateUrl: 'partials/home.html',
+                        controller: 'HomeCtrl'
+                    }).when('/items', {
+                        templateUrl: 'partials/items.html',
+                        controller: 'ItemsCtrl'
+                    }).when('/items/:id', {
+                        templateUrl: 'partials/item.html',
+                        controller: 'ItemCtrl'
+                    }).otherwise({
+                        redirectTo: '/'
+                    });
+        }]);
+
+
+</script>
+
+</body>
+</html>

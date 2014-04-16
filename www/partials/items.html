@@ -1,0 +1,26 @@
+<div class="container">
+    <h1>Items</h1>
+    <h5>- {{ status }} -</h5>
+
+    id: <input ng-model="newitem.id" />
+    Name: <input ng-model="newitem.name" />
+
+    <button class="btn btn-default" ng-click="addItem()">Add Item</button>
+
+    <table class="table table-condensed" style="margin-top: 10px">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr  ng-repeat="item in items | orderBy:'name'">
+            <td class="col-xs-1">{{ item.id }}</td>
+            <td class="col-xs-3"><a ng-href="#items/{{ item.id }}">{{ item.name }}</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>

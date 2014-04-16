@@ -42,7 +42,10 @@ function ItemsCtrl($scope) {
                     "Result: " + result.text + "\n" +
                     "Format: " + result.format + "\n" +
                     "Cancelled: " + result.cancelled);
-                $scope.newitem.name = result.text;
+
+                $scope.$apply(function() {
+                    $scope.newitem.name = result.text;
+                });
 
             },
             function (error) {

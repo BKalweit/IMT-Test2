@@ -91,7 +91,7 @@
                     });
         }]);
 
-     function scanBarcode() {
+     function scanBarcode(target) {
 
         var scanner = cordova.require("com.phonegap.plugins.barcodescanner.BarcodeScanner");
 
@@ -103,6 +103,7 @@
                             "Result: " + result.text + "\n" +
                             "Format: " + result.format + "\n" +
                             "Cancelled: " + result.cancelled);
+                    document.getElementById(target).val = result.text
                 },
                 function (error) {
                     alert("Scanning failed: " + error);

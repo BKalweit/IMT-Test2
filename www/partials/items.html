@@ -3,10 +3,10 @@
     <h5>- {{ status }} -</h5>
 
     id: <input ng-model="newitem.id" />
-    Name: <input ng-model="newitem.name" />
+    Name: <input id="newName" ng-model="newitem.name" />
 
     <button class="btn btn-default" ng-click="addItem()">Add Item</button>
-    <button class="btn btn-default" onclick="scanBarcode()">Read ID</button>
+    <button class="btn btn-default" onclick="scanBarcode('newName')">Read ID</button>
 
     <table class="table table-condensed" style="margin-top: 10px">
         <thead>

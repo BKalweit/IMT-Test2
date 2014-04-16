@@ -17,7 +17,7 @@ function HomeCtrl($scope) {
 };
 
 
-function ItemsCtrl($scope) {
+function ItemsCtrl($scope, $http) {
 
     $scope.items = [];
     $scope.items.push({ id: 1, name: 'Item1' });
@@ -43,9 +43,15 @@ function ItemsCtrl($scope) {
                     "Format: " + result.format + "\n" +
                     "Cancelled: " + result.cancelled);
 
-                $scope.$apply(function() {
-                    $scope.newitem.name = result.text;
-                });
+                if (!result.cancelled) {
+                    $http.get('http://server1.imt.local/imtsql/api/WorkOrder/' + result.text.substr(0, 6)).success(function (data) {
+                        $scope.wo = data;
+                    }).error(function (err) {
+                        alert('Failed to get WO: ' + err);
+                    });
+
+                    $scope.newitem.RequisitionID = result.text;
+                }
 
             },
             function (error) {

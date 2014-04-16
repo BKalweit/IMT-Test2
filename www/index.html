@@ -103,7 +103,7 @@
                             "Result: " + result.text + "\n" +
                             "Format: " + result.format + "\n" +
                             "Cancelled: " + result.cancelled);
-                    document.getElementById("newName").val = result.text
+                    document.getElementById(target).value = result.text
                 },
                 function (error) {
                     alert("Scanning failed: " + error);

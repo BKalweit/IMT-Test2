@@ -56,7 +56,7 @@ function ItemsCtrl($scope, $http) {
 
                 if (!result.cancelled) {
                     $scope.newWO.WO = result.text;
-                    $scope.GetWO();
+                    $scope.getWO();
                     $scope.AddItem();
 //                    $http.get('http://server1.imt.local/imtsql/api/WorkOrder/' + result.text.substr(0, 6)).success(function (data) {
 //                        $scope.newWo = data;

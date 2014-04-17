@@ -12,14 +12,24 @@
     <table class="table table-condensed" style="margin-top: 10px">
         <thead>
         <tr>
-            <th>id</th>
-            <th>Name</th>
+            <th>WO #</th>
+            <th>Customer</th>
+            <th>Part</th>
+            <th>Status</th>
+            <th>Rec'd</th>
+            <th>Count</th>
         </tr>
         </thead>
         <tbody>
-        <tr  ng-repeat="item in items | orderBy:'name'">
+        <tr  ng-repeat="wo in items | orderBy:'name'">
             <td class="col-xs-1">{{ item.id }}</td>
             <td class="col-xs-3"><a ng-href="#items/{{ item.id }}">{{ item.name }}</a></td>
+            <td class="col-xs-1">{{ wo.WO }}</td>
+            <td class="col-xs-1">{{ wo.CustCode }}: {{ wo.CustNamee }}</td>
+            <td class="col-xs-1">{{ wo.PartNumber }} / {{ wo.PartName }}</td>
+            <td class="col-xs-1">{{ wo.Status }}</td>
+            <td class="col-xs-1">{{ wo.ReceivedDate }}</td>
+            <td class="col-xs-1">{{ wo.CountReeived }} {{ wo.CountUnit }}</td>
         </tr>
         </tbody>
     </table>

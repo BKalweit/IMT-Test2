@@ -36,6 +36,7 @@ function ItemsCtrl($scope, $http) {
 
         navigator.notification.vibrate(1000);
 
+
         scanner.scan(
             function (result) {
                 alert("We got a barcode\n" +
@@ -46,6 +47,7 @@ function ItemsCtrl($scope, $http) {
                 if (!result.cancelled) {
                     $http.get('http://server1.imt.local/imtsql/api/WorkOrder/' + result.text.substr(0, 6)).success(function (data) {
                         $scope.wo = data;
+                        $scope.items.push(data);
                     }).error(function (err) {
                         alert('Failed to get WO: ' + err);
                     });

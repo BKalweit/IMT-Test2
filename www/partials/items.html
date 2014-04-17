@@ -1,14 +1,13 @@
 <div class="container">
-    <h1>Create List</h1>
+    <h1>WO List</h1>
     <h5>- {{ status }} -</h5>
 
     WO#: <input type="number" ng-model="newWONumber" />
 
     <button class="btn btn-default" ng-click="scanBarcode()">Scan</button>
-    <!--<button class="btn btn-default" ng-click="getWO()">Get WO</button>-->
     <button class="btn btn-default" ng-click="addItem()">Add WO</button>
 
-    &nbsp({{ newWONumber.substr(0, 6) }})
+    &nbsp ( {{ newWONumber.substr(0, 6) }} )
 
     <table class="table table-condensed" style="margin-top: 10px">
         <thead>

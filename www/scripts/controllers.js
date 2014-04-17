@@ -24,11 +24,9 @@ function ItemsCtrl($scope, $http) {
     $scope.addItem = function () {
         $scope.getWO();
         if ($scope.newWO.WO) {
-            $scope.$apply(function () {
                 $scope.items.push($scope.newWO);
                 $scope.newWONumber = "";
                 $scope.newWO = {};
-            });
         }
     };
 

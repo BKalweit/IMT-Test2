@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-    <title>Seed App</title>
+    <title>Work Orders</title>
     <link rel="stylesheet" href="scripts/vendor/bootstrap-yeti.css">
 </head>
 
@@ -24,7 +24,6 @@
         <div class="collapse navbar-collapse" collapse="navCollapsed">
             <ul class="nav navbar-nav">
                 <li><a href="#items">Items</a></li>
-                <li><a>{{ status2 }}</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
@@ -91,26 +90,7 @@
                     });
         }]);
 
-     function scanBarcode(target) {
 
-        var scanner = cordova.require("com.phonegap.plugins.barcodescanner.BarcodeScanner");
-
-        navigator.notification.vibrate(1000);
-
-        scanner.scan(
-                function (result) {
-                    alert("We got a barcode\n" +
-                            "Result: " + result.text + "\n" +
-                            "Format: " + result.format + "\n" +
-                            "Cancelled: " + result.cancelled);
-                    document.getElementById(target).value = result.text
-                },
-                function (error) {
-                    alert("Scanning failed: " + error);
-                }
-        );
-
-    }
 </script>
 
 </body>

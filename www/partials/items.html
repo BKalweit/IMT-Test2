@@ -7,7 +7,7 @@
     <button class="btn btn-default" ng-click="scanBarcode()">Scan</button>
     <button class="btn btn-default" ng-click="addItem()">Add WO</button>
 
-    &nbsp ( {{ newWONumber.substr(0, 6) }} )
+    &nbsp ( {{ newWONumber.toString().substr(0, 6) }} )
 
     <table class="table table-condensed" style="margin-top: 10px">
         <thead>

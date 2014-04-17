@@ -21,24 +21,17 @@ function ItemsCtrl($scope, $http) {
 
     $scope.items = [];
 
-    $scope.addItem = function () {
-        $scope.getWO();
-        if ($scope.newWONumber) {
-                $scope.items.push($scope.WO);
-                $scope.newWONumber = "";
-                $scope.newWO = {};
-        }
-    };
+    $scope.newWONumber = 243297;
 
-    $scope.getWO = function () {
-        if ($scope.newWONumber) {
-                $http.get('http://http://server1.imt.local/imtsql/api/WorkOrderView/' + $scope.newWONumber.substr(0, 6)).success(function (data) {
-                    $scope.WO = data;
-                }).error(function (err) {
-                    alert('Failed to get WO: ' + err.code);
-                });
-        }
-    }
+    $scope.addItem = function () {
+        $http.get('http://server1.imt.local/imtsql/api/WorkOrderView/' + $scope.newWONumber.toString().substr(0, 6)).success(function (wo) {
+            $scope.items.push(wo);
+            $scope.newWONumber = "";
+            $scope.newWO = {};
+        }).error(function (err) {
+            alert('Failed to get WO: ' + err.code);
+        });
+    };
 
     $scope.scanBarcode = function () {
 

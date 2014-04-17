@@ -49,17 +49,11 @@ function ItemsCtrl($scope, $http) {
 
         scanner.scan(
             function (result) {
-                alert("We got a barcode\n" +
-                    "Result: " + result.text + "\n" +
-                    "Format: " + result.format + "\n" +
-                    "Cancelled: " + result.cancelled);
-
                 if (!result.cancelled) {
                     $scope.newWO.WO = result.text;
-                    $scope.getWO();
+//                    $scope.getWO();
                     $scope.addItem();
                 }
-
             },
             function (error) {
                 alert("Scanning failed: " + error);

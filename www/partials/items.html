@@ -23,7 +23,7 @@
         <tbody>
         <tr  ng-repeat="wo in items | orderBy:'name'">
             <td class="col-xs-1">{{ wo.WO }}</td>
-            <td class="col-xs-1">{{ wo.CustCode }}: {{ wo.CustNamee }}</td>
+            <td class="col-xs-2">{{ wo.CustCode }}: {{ wo.CustName }}</td>
             <td class="col-xs-1">{{ wo.PartNumber }} / {{ wo.PartName }}</td>
             <td class="col-xs-1">{{ wo.Status }}</td>
             <td class="col-xs-1">{{ wo.ReceivedDate }}</td>

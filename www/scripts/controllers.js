@@ -24,7 +24,7 @@ function ItemsCtrl($scope, $http) {
     $scope.addItem = function () {
         $scope.getWO();
         if ($scope.newWONumber) {
-                $scope.items.push($scope.newWO);
+                $scope.items.push($scope.WO);
                 $scope.newWONumber = "";
                 $scope.newWO = {};
         }
@@ -32,8 +32,8 @@ function ItemsCtrl($scope, $http) {
 
     $scope.getWO = function () {
         if ($scope.newWONumber) {
-                $http.get('http://server1.imt.local/imtsql/api/WorkOrder/' + $scope.newWONumber.substr(0, 6)).success(function (data) {
-                    $scope.newWO = data;
+                $http.get('http://server1.imt.local/imtsql/api/WorkOrderView/' + $scope.newWONumber.substr(0, 6)).success(function (data) {
+                    $scope.WO = data;
                 }).error(function (err) {
                     alert('Failed to get WO: ' + err.code);
                 });

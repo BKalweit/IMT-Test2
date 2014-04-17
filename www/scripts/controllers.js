@@ -56,7 +56,8 @@ function ItemsCtrl($scope, $http) {
 
                 if (!result.cancelled) {
                     $scope.newWO.WO = result.text;
-                    $scope.AddItem();
+                    $scope.getWO();
+                    $scope.addItem();
                 }
 
             },

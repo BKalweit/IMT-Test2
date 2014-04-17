@@ -25,7 +25,7 @@ function ItemsCtrl($scope, $http) {
         $scope.getWO();
         if ($scope.newWO.WO) {
             $scope.items.push($scope.newWO);
-            $scope.newWONumber = {};
+            $scope.newWONumber = "";
             $scope.newWO = {};
         }
     };

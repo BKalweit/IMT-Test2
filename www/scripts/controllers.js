@@ -28,7 +28,7 @@ function ItemsCtrl($scope, $http) {
                 $scope.items.push($scope.newWO);
                 $scope.newWONumber = "";
                 $scope.newWO = {};
-            }
+            });
         }
     };
 

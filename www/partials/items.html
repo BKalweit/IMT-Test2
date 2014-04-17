@@ -22,8 +22,6 @@
         </thead>
         <tbody>
         <tr  ng-repeat="wo in items | orderBy:'name'">
-            <td class="col-xs-1">{{ item.id }}</td>
-            <td class="col-xs-3"><a ng-href="#items/{{ item.id }}">{{ item.name }}</a></td>
             <td class="col-xs-1">{{ wo.WO }}</td>
             <td class="col-xs-1">{{ wo.CustCode }}: {{ wo.CustNamee }}</td>
             <td class="col-xs-1">{{ wo.PartNumber }} / {{ wo.PartName }}</td>

@@ -23,7 +23,7 @@ function ItemsCtrl($scope, $http) {
 
     $scope.addItem = function () {
         $scope.getWO();
-        if ($scope.newWO.WO) {
+        if ($scope.newWONumber) {
                 $scope.items.push($scope.newWO);
                 $scope.newWONumber = "";
                 $scope.newWO = {};

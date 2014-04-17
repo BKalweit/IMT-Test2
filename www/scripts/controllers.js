@@ -32,7 +32,7 @@ function ItemsCtrl($scope, $http) {
 
     $scope.getWO = function () {
         if ($scope.newWONumber) {
-                $http.get('http://server1.imt.local/imtsql/api/WorkOrderView/' + $scope.newWONumber.substr(0, 6)).success(function (data) {
+                $http.get('http://http://server1.imt.local/imtsql/api/WorkOrderView/' + $scope.newWONumber.substr(0, 6)).success(function (data) {
                     $scope.WO = data;
                 }).error(function (err) {
                     alert('Failed to get WO: ' + err.code);

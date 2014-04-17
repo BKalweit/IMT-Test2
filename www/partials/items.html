@@ -1,12 +1,11 @@
 <div class="container">
-    <h1>Items</h1>
+    <h1>Work Orders</h1>
     <h5>- {{ status }} -</h5>
 
     id: <input ng-model="newitem.id" />
-    Name: <input id="newName" ng-model="newitem.name" />
 
-    <button class="btn btn-default" ng-click="addItem()">Add Item</button>
-    <button class="btn btn-default" ng-click="scanBarcode()">Read ID</button>
+    <button class="btn btn-default" ng-click="scanBarcode()">Scan</button>
+    <button class="btn btn-default" ng-click="addItem()">Add WO</button>
     {{ wo.CustCode }}
 
     <table class="table table-condensed" style="margin-top: 10px">
@@ -27,7 +26,7 @@
             <td class="col-xs-1">{{ wo.PartNumber }} / {{ wo.PartName }}</td>
             <td class="col-xs-1">{{ wo.Status }}</td>
             <td class="col-xs-1">{{ wo.ReceivedDate }}</td>
-            <td class="col-xs-1">{{ wo.CountReeived }} {{ wo.CountUnit }}</td>
+            <td class="col-xs-1">{{ wo.CountReceived }} {{ wo.CountUnit }}</td>
         </tr>
         </tbody>
     </table>

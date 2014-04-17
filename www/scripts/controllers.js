@@ -20,15 +20,19 @@ function HomeCtrl($scope) {
 function ItemsCtrl($scope, $http) {
 
     $scope.items = [];
-    $scope.items.push({ id: 1, name: 'Item1' });
-    $scope.items.push({ id: 2, name: 'Item2' });
-
-    $scope.newitem = { id: 3, name: 'Item3' };
 
     $scope.addItem = function () {
-        $scope.items.push($scope.newitem);
-        $scope.newitem = {};
+        $scope.items.push($scope.newWO);
+        $scope.newWO = {};
     };
+
+    $scope.GetWO = function () {
+        $http.get('http://server1.imt.local/imtsql/api/WorkOrder/' + newWO.WO.substr(0, 6)).success(function (data) {
+            $scope.newWo = data;
+        }).error(function (err) {
+            alert('Failed to get WO: ' + err);
+        });
+    }
 
     $scope.scanBarcode = function () {
 
@@ -45,14 +49,14 @@ function ItemsCtrl($scope, $http) {
                     "Cancelled: " + result.cancelled);
 
                 if (!result.cancelled) {
-                    $http.get('http://server1.imt.local/imtsql/api/WorkOrder/' + result.text.substr(0, 6)).success(function (data) {
-                        $scope.wo = data;
-                        $scope.items.push(data);
-                    }).error(function (err) {
-                        alert('Failed to get WO: ' + err);
-                    });
+                    $scope.newWO.WO = result.text;
+                    $scope.GetWO();
+//                    $http.get('http://server1.imt.local/imtsql/api/WorkOrder/' + result.text.substr(0, 6)).success(function (data) {
+//                        $scope.newWo = data;
+//                    }).error(function (err) {
+//                        alert('Failed to get WO: ' + err);
+//                    });
 
-                    $scope.newitem.RequisitionID = result.text;
                 }
 
             },
